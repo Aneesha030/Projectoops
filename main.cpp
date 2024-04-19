@@ -1,25 +1,25 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <iomanip> // Added for setprecision
+#include <iomanip> 
 
 using namespace std;
 
 float round(float var)
 {
-    int value = (int)(var * 100 + .5); // Corrected rounding
+    int value = (int)(var * 100 + .5); 
     return (float)value / 100;
 }
 
 class Student {
 private:
-    static const int MAX_STUDENTS = 100; // Maximum number of students
+    static const int MAX_STUDENTS = 100; 
     int rollno[MAX_STUDENTS];
     int age[MAX_STUDENTS];
     string name[MAX_STUDENTS];
     float cgpa[MAX_STUDENTS];
     int numOfStudents;
-    static const int MAX_NCGPA = 100; // Maximum number of students with CGPA >= 9
+    static const int MAX_NCGPA = 100; 
     int ncgpa;
     string ninames[MAX_NCGPA]; // Array to store names of students with CGPA >= 9
     float nicgpa[MAX_NCGPA]; // Array to store CGPA of students with CGPA >= 9
@@ -61,7 +61,7 @@ public:
         cout << "Roll No : " << rollno[index] << endl;
         cout << "Name : " << name[index] << endl;
         cout << "Age : " << age[index] << endl;
-        cout << "CGPA : " << fixed << setprecision(2) << round(cgpa[index]) << endl; // Added setprecision to display CGPA with 2 decimal places
+        cout << "CGPA : " << fixed << setprecision(2) << round(cgpa[index]) << endl;
     }
 
     int searchStudent(int searchRollno) {
@@ -164,7 +164,7 @@ private:
     static int numofteachers;
 
 public:
-    void setdata(string s, char arr[], int num) //for us to register few teachers
+    void setdata(string s, char arr[], int num) 
     {
         name[numofteachers] = s;
         num_slots = num;
@@ -183,7 +183,7 @@ public:
 
     stdteachsch() {}
 
-    void getslots() //To ask the teacher to register
+    void getslots() 
     {
         string name1;
         string times;
@@ -231,7 +231,7 @@ public:
     }
 
     int nstdslots = 1;
-    void getstdslots() //student's slots
+    void getstdslots() 
     {
         string times;
         char dl = ',';
