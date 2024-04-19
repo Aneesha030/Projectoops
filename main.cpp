@@ -1,44 +1,44 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <iomanip> 
+#include <iomanip>
 
 using namespace std;
 
 float round(float var)
 {
-    int value = (int)(var * 100 + .5); 
+    int value = (int)(var * 100 + .5);
     return (float)value / 100;
 }
 
 class Student {
 private:
-    static const int MAX_STUDENTS = 100; 
+    static const int MAX_STUDENTS = 100; // Maximum number of students
     int rollno[MAX_STUDENTS];
     int age[MAX_STUDENTS];
     string name[MAX_STUDENTS];
     float cgpa[MAX_STUDENTS];
     int numOfStudents;
-    static const int MAX_NCGPA = 100; 
-    int ncgpa;
-    string ninames[MAX_NCGPA]; // Array to store names of students with CGPA >= 9
-    float nicgpa[MAX_NCGPA]; // Array to store CGPA of students with CGPA >= 9
-
+    static const int MAX_NCGPA = 100;
+	int ncgpa;
+	string ninames[MAX_NCGPA];
+	float nicgpa[MAX_NCGPA];
+	
 public:
     Student() {
         numOfStudents = 0;
-        ncgpa = 0;
+        ncgpa=0;
     }
 
-    void addNewStudent(int stdId, string stdName, int stdAge, float stdcgpa) {
+    void addNewStudent(int stdId, string stdName, int stdAge,float stdcgpa) {
         if (numOfStudents < MAX_STUDENTS) {
             rollno[numOfStudents] = stdId;
             name[numOfStudents] = stdName;
             age[numOfStudents] = stdAge;
             cgpa[numOfStudents] = stdcgpa;
             if (stdcgpa >= 9){
-                ninames[ncgpa] = stdName;
-                nicgpa[ncgpa] = stdcgpa;
+            	ninames[ncgpa]=stdName;
+            	nicgpa[ncgpa] = stdcgpa;
                 ncgpa++;
             }
             numOfStudents++;
@@ -48,9 +48,9 @@ public:
     }
 
     int checkrollnum(int rno){
-        for(int i = 0; i < numOfStudents; i++){
+        for(int i=0; i < numOfStudents ; i++){
             if(rno == rollno[i]){
-                cout << "Roll Number already exists." << endl;
+                cout<<"Roll number already exists. "<<endl;
                 return 1;
             }
         }
@@ -61,7 +61,7 @@ public:
         cout << "Roll No : " << rollno[index] << endl;
         cout << "Name : " << name[index] << endl;
         cout << "Age : " << age[index] << endl;
-        cout << "CGPA : " << fixed << setprecision(2) << round(cgpa[index]) << endl;
+        cout<<"CGPA : "  << fixed << setprecision(2) << round(cgpa[index])<<endl;
     }
 
     int searchStudent(int searchRollno) {
@@ -79,8 +79,14 @@ public:
                 int rno;
                 cout << "\t\tEnter New Rollno :";
                 cin >> rno;
-                if (checkrollnum(rno) == 1){
-                    cout << "This Roll Number already exists. Cannot be reassigned" << endl;
+                int n=0;
+                for(int i=0; i < numOfStudents ; i++){
+                    if(rno != rollno[i]){
+                        n++;
+                    }
+                }
+                if(n < numOfStudents){
+                    cout<<"This Roll Number already exists. Cannot be reassigned"<<endl;
                     break;
                 }
                 rollno[index] = rno;
@@ -139,9 +145,10 @@ public:
         cout<<"\t\t\t---------9 POINTERS LIST----------"<<endl;
         for(int i=0 ; i < ncgpa ; i++)
         {
-            cout<<"\t\t\t" << i+1<<". "<<ninames[i]<<"\t\t\t\t\t\t"<<fixed << setprecision(2) << round(nicgpa[i])<<endl;
+            cout<<i+1<<". "<<ninames[i]<<"\t\t\t\t\t\t"<<fixed<<setprecision(2)<<round(nicgpa[i])<<endl;
         }
     }
+
 };
 
 void splitString(const string& input, char delimiter, string arr[], int size, int& index)
@@ -164,7 +171,7 @@ private:
     static int numofteachers;
 
 public:
-    void setdata(string s, char arr[], int num) 
+    void setdata(string s, char arr[], int num)
     {
         name[numofteachers] = s;
         num_slots = num;
@@ -183,7 +190,7 @@ public:
 
     stdteachsch() {}
 
-    void getslots() 
+    void getslots()
     {
         string name1;
         string times;
@@ -231,7 +238,7 @@ public:
     }
 
     int nstdslots = 1;
-    void getstdslots() 
+    void getstdslots()
     {
         string times;
         char dl = ',';
@@ -263,7 +270,7 @@ public:
         splitString(times, dl, stdslots, 25, index);
     }
 
-    void dispcommon() //to display common slots
+    void dispcommon()
     {
         int ncm = 0;
         string tname;
@@ -451,5 +458,5 @@ int main() {
         cin >> choice;
     } while (choice[0] == 'y' || choice[0] == 'Y');
 
-    return 0;
+    return 0;
 }
