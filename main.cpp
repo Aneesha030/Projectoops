@@ -27,10 +27,6 @@ private:
     float cgpa[MAX_STUDENTS];
     int numOfStudents;
     static const int MAX_NCGPA = 100;
-	int ncgpa;
-	string ninames[MAX_NCGPA];
-	float nicgpa[MAX_NCGPA];
-	
 public:
     Student() {
         numOfStudents = 0;
